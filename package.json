@@ -1,0 +1,29 @@
+{
+  "name": "ssh-key-god",
+  "version": "1.0.1",
+  "description": "可视化管理本机ssh秘钥",
+  "main": "index.js",
+  "bin": {
+    "skg": "index.js"
+  },
+  "dependencies": {
+    "colors": "^1.1.2",
+    "commander": "^2.11.0",
+    "rightpad": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoBey/ssh-key-god.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NoBey/ssh-key-god/issues"
+  },
+  "homepage": "https://github.com/NoBey/ssh-key-god#readme"
+}
