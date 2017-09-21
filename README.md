@@ -1,2 +1,2 @@
 # ssh-key-god
-可视化管理本机ssh秘钥
+管理本机ssh链接

@@ -1,7 +1,7 @@
 {
   "name": "ssh-key-god",
-  "version": "1.0.1",
-  "description": "可视化管理本机ssh秘钥",
+  "version": "1.0.2",
+  "description": "管理本机ssh链接",
   "main": "index.js",
   "bin": {
     "skg": "index.js"

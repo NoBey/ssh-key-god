@@ -8,8 +8,7 @@ const program = require('commander');
 const colors = require('colors');
 const rightpad = require('rightpad');
 const userPath = (process.env.HOME || process.env.HOMEPATH) + '/.ssh/known_hosts'
-
-const raw = fs.readFileSync('./out');
+const raw = fs.readFileSync(userPath);
 
 const version = require('./package.json').version
 
@@ -87,7 +86,7 @@ function update(id, info){
 }
 
 function save(data){
-  fs.writeFile('./out',data.join('\n'),function(...arr){
+  fs.writeFile(userPath, data.join('\n'),function(...arr){
   })
 }
 
