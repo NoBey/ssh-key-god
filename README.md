@@ -1,6 +1,13 @@
 # ssh-key-god
----
+
 > 管理本机ssh链接
+
+---
+
+#### 安装
+
+> npm i ssh-key-god -g
+
 
 #### 查看连接过的ssh
 >  skg list
