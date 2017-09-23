@@ -24,3 +24,10 @@
 > skg del id  - [id] 是 list 后给出的id
 
 ![go](./res/del.png)
+
+
+### 关于桌面版
+
+> 后面研究好会发出刚方便的版本
+
+![mac](./res/mac.png)
