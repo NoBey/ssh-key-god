@@ -8,8 +8,15 @@ const program = require('commander');
 const colors = require('colors');
 const rightpad = require('rightpad');
 const userPath = (process.env.HOME || process.env.HOMEPATH) + '/.ssh/known_hosts'
+const userConfigPath = (process.env.HOME || process.env.HOMEPATH) + '/.skg.json'
 const raw = fs.readFileSync(userPath);
-
+let config = null;
+try {
+  config =  JSON.parse(fs.readFileSync(userConfigPath)) ;  
+} catch (error) {
+  config = {};
+}
+console.log(config)
 const version = require('./package.json').version
 
 // program.command('list', '查看全部ssh链接').action(list)
@@ -24,6 +31,7 @@ if(alias[cmd]) process.argv[1] = alias[cmd]
 program.command('list').action(list)
 program.command('go [id] [user]').action(go)
 program.command('del [id]').action(del)
+program.command('set [id] [user]').action(setuset)
 
 // console.log(program)
 
@@ -57,12 +65,20 @@ function list(){
   return
 }
 
+function setuset(id, user){
+  config[id] = user;
+  fs.writeFile(userConfigPath, JSON.stringify(config) ,function(...arr){
+  })
+}
 
 function go(id, user){
   const data = raw.toString().split('\n').filter( a => a!='')
-  const host = parseIp(data[id].split(' ')[0])[0]
+  const item = data[id] || data[config[id]]
+  const host = parseIp(item.split(' ')[0])[0]
   console.log(`${'=>'.red} ${'Open'.cyan} ${host.green} ${'Ssh link'.cyan}`)
   if(!user) user = 'root'
+  if(config[id] && data[id]) user = config[id]
+  if(config[id] && !data[id]) user = config[config[id]]
   spawn('ssh',[`${user}@${host}`,'-tt'],{
     stdio: [ process.stdin, process.stdout, process.stderr ]
   })
