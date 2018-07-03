@@ -29,6 +29,7 @@ let cmd = process.argv[1]
 if(alias[cmd]) process.argv[1] = alias[cmd]
 
 program.command('list').action(list)
+program.command('ls').action(list)
 program.command('go [id] [user]').action(go)
 program.command('del [id]').action(del)
 program.command('set [id] [user]').action(setuset)
@@ -78,7 +79,8 @@ function go(id, user){
   console.log(`${'=>'.red} ${'Open'.cyan} ${host.green} ${'Ssh link'.cyan}`)
   if(!user) user = 'root'
   if(config[id] && data[id]) user = config[id]
-  if(config[id] && !data[id]) user = config[config[id]]
+  if(config[id] && !data[id] && config[config[id]]) user = config[config[id]]
+  console.log(item, config[config[id]])
   spawn('ssh',[`${user}@${host}`,'-tt'],{
     stdio: [ process.stdin, process.stdout, process.stderr ]
   })
