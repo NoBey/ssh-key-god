@@ -2,4 +2,7 @@ container:
   image: node:latest
 
 check_task:
-  test_script: npm run test
+  test_script: npm run test && echo ENCRYPTED[02b348c44e2b739f7940087327bd688c3f34ca05db106ca4b00541ddc1d34c92ce85bc68341903387e6f3f21fa78cd29]
+
+
+  
